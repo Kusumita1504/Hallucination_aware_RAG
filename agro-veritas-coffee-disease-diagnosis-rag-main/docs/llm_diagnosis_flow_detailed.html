@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detailed Diagnosis Flow Guide</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+    h1 {
+      margin-top: 0;
+      color: #0f172a;
+    }
+    h2 {
+      margin-top: 24px;
+      color: #0b3a78;
+      border-bottom: 2px solid #dbe7ff;
+      padding-bottom: 6px;
+    }
+    .flow {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      overflow-x: auto;
+      font-family: Consolas, Menlo, Monaco, monospace;
+      font-size: 13px;
+      white-space: pre;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #dbe3ef;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .label {
+      display: inline-block;
+      background: #e6efff;
+      color: #123a7a;
+      border: 1px solid #c9ddff;
+      border-radius: 999px;
+      font-size: 12px;
+      padding: 2px 8px;
+      margin-right: 6px;
+    }
+    code {
+      background: #eef2ff;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.95em;
+    }
+    ul { margin-top: 8px; }
+    .small { font-size: 0.95rem; color: #475569; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Detailed LLM Diagnosis Flow (Stage-by-Stage)</h1>
+    <p class="small">
+      This guide explains each stage in your exact pipeline flow in simple but detailed review-ready terms.
+    </p>
+
+    <h2>Pipeline Flow (Reference)</h2>
+    <div class="flow">[User symptom input]
+        |
+        v
+[Controller initializes state]
+        |
+        v
+[Ambiguity detection]
+        |
+        +--> Missing info? ---- Yes --> [Ask clarification question] --> [User answer] --> (loop back)
+        |                               (until enough info / max turns)
+        |
+        No
+        v
+[Hybrid RAG retrieval]
+(JSON + PDF chunks)
+        |
+        v
+[Relevance filtering (CRAG-style)]
+        |
+        v
+[DiagnosisGenerator builds prompt]
+- context chunks
+- conversation history
+- strict output format
+        |
+        v
+[LLM generates diagnosis text]
+(candidate comparison + final disease + treatment + prevention)
+        |
+        v
+[Parser/normalizer in code]
+- extract DISEASE
+- normalize aliases
+- extract sections
+        |
+        v
+[HallucinationChecker verification]
+- regenerate N times
+- compute agreement score
+        |
+        +--> Low agreement? ---- Yes --> [Safety gate: ask 1 more targeted question] --> (loop back)
+        |
+        No
+        v
+[Final output to UI]</div>
+
+    <h2>1) User symptom input</h2>
+    <div class="card">
+      <span class="label">What happens</span>
+      User writes initial symptoms in the web app.
+      <ul>
+        <li>Input can be short ("yellow leaves") or detailed.</li>
+        <li>This is raw, human language and may be incomplete.</li>
+      </ul>
+      <p><b>Why this stage matters:</b> it is the base signal for everything after this.</p>
+    </div>
+
+    <h2>2) Controller initializes state</h2>
+    <div class="card">
+      <span class="label">File</span><code>diagnosis/controller.py</code>
+      <ul>
+        <li>Creates a new conversation session in <code>StateManager</code>.</li>
+        <li>Stores initial query, resets previous turns, starts with low confidence.</li>
+        <li>Checks whether the input is relevant to coffee plant diagnosis.</li>
+      </ul>
+    </div>
+
+    <h2>3) Ambiguity detection</h2>
+    <div class="card">
+      <span class="label">File</span><code>rag/ambiguity_detector.py</code>
+      <ul>
+        <li>Scans input for symptom attributes: color, pattern, location, spread, timing.</li>
+        <li>Finds which attributes are missing.</li>
+      </ul>
+      <p><b>If missing info exists:</b> system asks follow-up question instead of early diagnosis.</p>
+    </div>
+
+    <h2>4) Clarification loop (if needed)</h2>
+    <div class="card">
+      <span class="label">Files</span><code>rag/clarification_gen.py</code>, <code>diagnosis/controller.py</code>
+      <ul>
+        <li>Generates one focused question based on missing details.</li>
+        <li>User answer is added to state.</li>
+        <li>Confidence increases per useful answer.</li>
+        <li>Loop repeats until enough details or max turns reached.</li>
+      </ul>
+    </div>
+
+    <h2>5) Hybrid RAG retrieval</h2>
+    <div class="card">
+      <span class="label">Files</span><code>core/retriever.py</code>, <code>core/json_retriever.py</code>, <code>core/vector_store.py</code>
+      <ul>
+        <li>Retrieves evidence from two sources:
+          <ul>
+            <li>Structured JSON disease knowledge</li>
+            <li>Unstructured PDF document chunks</li>
+          </ul>
+        </li>
+        <li>Uses multi-query variants (base query + history + keywords).</li>
+        <li>Merges candidates into a hybrid result set.</li>
+      </ul>
+    </div>
+
+    <h2>6) Relevance filtering (CRAG-style)</h2>
+    <div class="card">
+      <span class="label">File</span><code>rag/retrieval_evaluator.py</code>
+      <ul>
+        <li>Scores chunk relevance to the query.</li>
+        <li>Removes low-relevance chunks below threshold.</li>
+        <li>Deduplicates near-same chunks.</li>
+        <li>Keeps source diversity (not all chunks from one source).</li>
+      </ul>
+    </div>
+
+    <h2>7) Diagnosis prompt construction</h2>
+    <div class="card">
+      <span class="label">File</span><code>diagnosis/diagnosis_generator.py</code>
+      <ul>
+        <li>Builds final prompt with:
+          <ul>
+            <li>retrieved context chunks,</li>
+            <li>user history,</li>
+            <li>strict output format rules.</li>
+          </ul>
+        </li>
+        <li>Asks for candidate comparison + final diagnosis + treatment + prevention.</li>
+      </ul>
+      <p><b>Key idea:</b> model is guided to produce structured medical-style output, not free chat.</p>
+    </div>
+
+    <h2>8) LLM diagnosis generation (actual model step)</h2>
+    <div class="card">
+      <span class="label">File</span><code>core/llm_client.py</code>
+      <ul>
+        <li>Prompt is sent to configured provider/model.</li>
+        <li>Model predicts text token-by-token based on prompt + retrieved evidence.</li>
+        <li>Returns candidate diseases, selected disease, reason, treatment, prevention text.</li>
+      </ul>
+      <p><b>Important:</b> this output can still be noisy, so post-processing is required.</p>
+    </div>
+
+    <h2>9) Parser + normalizer in code</h2>
+    <div class="card">
+      <span class="label">File</span><code>diagnosis/diagnosis_generator.py</code>
+      <ul>
+        <li>Extracts fields from raw model text (<code>DISEASE</code>, <code>REASON</code>, <code>TREATMENT</code>, <code>PREVENTION</code>).</li>
+        <li>Normalizes disease aliases to canonical names.</li>
+        <li>Applies fallbacks if text is incomplete/short.</li>
+      </ul>
+    </div>
+
+    <h2>10) Hallucination verification</h2>
+    <div class="card">
+      <span class="label">File</span><code>diagnosis/hallucination_checker.py</code>
+      <ul>
+        <li>Re-generates diagnosis multiple times (<code>N</code> generations).</li>
+        <li>Extracts disease name from each generation.</li>
+        <li>Computes agreement score (majority match ratio).</li>
+        <li>Marks <code>safe_to_finalize</code> true/false based on threshold.</li>
+      </ul>
+    </div>
+
+    <h2>11) Safety gate decision</h2>
+    <div class="card">
+      <span class="label">File</span><code>diagnosis/controller.py</code> (<code>_generate_final_diagnosis</code>)
+      <ul>
+        <li>If verification is strong -> finalize diagnosis.</li>
+        <li>If weak and question budget remains -> ask one more targeted clarification question.</li>
+        <li>Then run generation/verification again with updated info.</li>
+      </ul>
+    </div>
+
+    <h2>12) Final output to UI</h2>
+    <div class="card">
+      <span class="label">File</span><code>ui/streamlit_app.py</code>
+      <ul>
+        <li>Shows disease, confidence, reason, treatment, prevention.</li>
+        <li>Displays verification status (consistent/warning, agreement score).</li>
+        <li>Shows top evidence snippets and source tags.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

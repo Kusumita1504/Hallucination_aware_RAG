@@ -1,0 +1,584 @@
+{
+  "name": "coffee_diagnosis_eval_set_v2_expanded",
+  "description": "Expanded evaluation dataset with 60+ diverse test cases including natural linguistic variations and ambiguous multi-label cases. Addresses overfitting concerns from original 12-case dataset.",
+  "cases": [
+    {
+      "id": "c01_orig",
+      "disease_group": "Coffee Leaf Rust",
+      "query": "Yellow-orange powdery spots under leaves with yellow halos",
+      "expected_disease": "Coffee Leaf Rust",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["orange", "powder", "undersurface", "yellow halos"],
+      "followup_answers": ["Mostly on middle and lower leaves", "Yes, orange powder is mainly under the leaves", "It started around two weeks ago"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c01_var1",
+      "disease_group": "Coffee Leaf Rust",
+      "query": "Orange powder on underside of my coffee leaves",
+      "expected_disease": "Coffee Leaf Rust",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["orange", "powder", "underside"],
+      "followup_answers": ["yeah under the leaves", "spreading fast", "started recently"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c01_var2",
+      "disease_group": "Coffee Leaf Rust",
+      "query": "Leaves turning yellow with rust-colored spots, they're falling off",
+      "expected_disease": "Coffee Leaf Rust",
+      "plausible_alternatives": ["Brown Eye Spot"],
+      "relevant_keywords": ["yellow", "rust", "spots", "falling"],
+      "followup_answers": ["mostly old leaves", "orange dust underneath", "yes they drop"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c01_var3",
+      "disease_group": "Coffee Leaf Rust",
+      "query": "Rust looking disease on bottom of leaves with powder",
+      "expected_disease": "Coffee Leaf Rust",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["rust", "bottom", "powder"],
+      "followup_answers": ["circular patterns", "in monsoon season", "spreading to top leaves"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c02_orig",
+      "disease_group": "Nitrogen Deficiency",
+      "query": "Uniform yellowing of older lower leaves, no distinct spots",
+      "expected_disease": "Nitrogen Deficiency",
+      "plausible_alternatives": ["Magnesium Deficiency"],
+      "relevant_keywords": ["uniform yellowing", "older leaves", "no spots"],
+      "followup_answers": ["Older lower leaves are affected first", "No powder or insect holes, only yellowing", "Growth is slow"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c02_var1",
+      "disease_group": "Nitrogen Deficiency",
+      "query": "Plant looking pale yellow all over the lower part",
+      "expected_disease": "Nitrogen Deficiency",
+      "plausible_alternatives": ["Iron Deficiency"],
+      "relevant_keywords": ["pale yellow", "lower", "no spots"],
+      "followup_answers": ["yes starting from bottom", "veins not different color", "just pale everywhere"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c02_var2",
+      "disease_group": "Nitrogen Deficiency",
+      "query": "Yellowing but veins stay darker than leaf tissue",
+      "expected_disease": "Nitrogen Deficiency",
+      "plausible_alternatives": ["Magnesium Deficiency", "Iron Deficiency"],
+      "relevant_keywords": ["yellowing", "veins darker"],
+      "followup_answers": ["on older leaves", "whole leaf turning yellow", "not just between veins"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c03_orig",
+      "disease_group": "Magnesium Deficiency",
+      "query": "Yellowing between veins while veins stay green on older leaves",
+      "expected_disease": "Magnesium Deficiency",
+      "plausible_alternatives": ["Iron Deficiency"],
+      "relevant_keywords": ["between veins", "veins green", "older leaves"],
+      "followup_answers": ["This pattern is mostly on older leaves", "Veins remain green while tissue yellows", "No spots"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c03_var1",
+      "disease_group": "Magnesium Deficiency",
+      "query": "Green vein pattern showing through yellow leaves on old growth",
+      "expected_disease": "Magnesium Deficiency",
+      "plausible_alternatives": ["Iron Deficiency"],
+      "relevant_keywords": ["green vein", "yellow", "old"],
+      "followup_answers": ["yeah like a net pattern", "lower leaves worse", "started slowly"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c03_var2",
+      "disease_group": "Magnesium Deficiency",
+      "query": "Interveinal chlorosis on mature leaves, veins dark green",
+      "expected_disease": "Magnesium Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["interveinal", "chlorosis", "veins green"],
+      "followup_answers": ["bottom foliage mainly", "uniform pattern", "no lesions"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c04_orig",
+      "disease_group": "Coffee Berry Borer",
+      "query": "Small round holes at berry tip and berries shriveling",
+      "expected_disease": "Coffee Berry Borer",
+      "plausible_alternatives": ["Anthracnose"],
+      "relevant_keywords": ["holes", "berry tip", "shriveling"],
+      "followup_answers": ["Yes, tiny holes at berry end", "Some berries shriveled and drop early", "Powder-like frass"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c04_var1",
+      "disease_group": "Coffee Berry Borer",
+      "query": "Berries with exit holes and damaged seed inside",
+      "expected_disease": "Coffee Berry Borer",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["exit holes", "seed", "damaged"],
+      "followup_answers": ["holes on side", "beans inside affected", "many berries"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c04_var2",
+      "disease_group": "Coffee Berry Borer",
+      "query": "Brown damaged spots on berries with tiny insect visible",
+      "expected_disease": "Coffee Berry Borer",
+      "plausible_alternatives": ["Anthracnose"],
+      "relevant_keywords": ["brown", "insect", "berry"],
+      "followup_answers": ["saw tiny bug inside hole", "berries drop early", "sawdust inside"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c05_orig",
+      "disease_group": "Anthracnose",
+      "query": "Dark brown sunken spots on green berries with pink mass in wet",
+      "expected_disease": "Anthracnose",
+      "plausible_alternatives": ["Coffee Berry Borer"],
+      "relevant_keywords": ["sunken spots", "green berries", "pink"],
+      "followup_answers": ["Spots sunken and dark", "Pinkish spores when humid", "No boring holes"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c05_var1",
+      "disease_group": "Anthracnose",
+      "query": "Berry rot with pink spore masses in humid weather",
+      "expected_disease": "Anthracnose",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["rot", "pink", "humid"],
+      "followup_answers": ["wet weather worse", "pinkish coating", "berries mushy"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c05_var2",
+      "disease_group": "Anthracnose",
+      "query": "Stem canker with dark lesions and progressive branch death",
+      "expected_disease": "Anthracnose",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["canker", "stem", "branch death"],
+      "followup_answers": ["branches above canker dying", "dark sunken lesion", "gummy exudate"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c06_orig",
+      "disease_group": "Brown Eye Spot",
+      "query": "Circular brown spots with pale gray center on leaves",
+      "expected_disease": "Brown Eye Spot",
+      "plausible_alternatives": ["Phoma Leaf Spot"],
+      "relevant_keywords": ["circular spots", "gray center", "brown margin"],
+      "followup_answers": ["Spots round with gray center", "Mostly leaves", "No orange powder"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c06_var1",
+      "disease_group": "Brown Eye Spot",
+      "query": "Dark brown spots with lighter colored ring in the middle",
+      "expected_disease": "Brown Eye Spot",
+      "plausible_alternatives": ["Phoma Leaf Spot"],
+      "relevant_keywords": ["dark brown", "lighter center", "ring"],
+      "followup_answers": ["yes like a target", "older leaves more", "small spots"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c06_var2",
+      "disease_group": "Brown Eye Spot",
+      "query": "Round spots with concentric rings of brown and gray",
+      "expected_disease": "Brown Eye Spot",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["round", "concentric", "gray"],
+      "followup_answers": ["bull's eye pattern", "spreading slow", "on leaf surface"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c07_orig",
+      "disease_group": "Root Rot / Wilt",
+      "query": "Plant wilting suddenly even when soil has water, roots brown",
+      "expected_disease": "Root Rot / Wilt Disease",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["wilting", "enough water", "brown roots"],
+      "followup_answers": ["Wilting continues after irrigation", "Roots dark brown soft", "Started from root zone"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c07_var1",
+      "disease_group": "Root Rot / Wilt",
+      "query": "Entire plant drooping with mushy root system despite watering",
+      "expected_disease": "Root Rot / Wilt Disease",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["drooping", "mushy", "roots"],
+      "followup_answers": ["roots soggy", "smell bad", "happened suddenly"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c07_var2",
+      "disease_group": "Root Rot / Wilt",
+      "query": "Plant dying from bottom up even with sufficient moisture",
+      "expected_disease": "Root Rot / Wilt Disease",
+      "plausible_alternatives": ["Coffee Wilt Disease"],
+      "relevant_keywords": ["dying", "bottom", "moisture"],
+      "followup_answers": ["bottom branches first", "can't save it", "roots affected"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c08_orig",
+      "disease_group": "Iron Deficiency",
+      "query": "Young leaves pale yellow while veins remain green",
+      "expected_disease": "Iron Deficiency",
+      "plausible_alternatives": ["Magnesium Deficiency"],
+      "relevant_keywords": ["young leaves", "pale yellow", "veins green"],
+      "followup_answers": ["Young top leaves first", "Interveinal yellowing clear", "Older leaves less"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c08_var1",
+      "disease_group": "Iron Deficiency",
+      "query": "New growth showing yellow with prominent green vein pattern",
+      "expected_disease": "Iron Deficiency",
+      "plausible_alternatives": ["Magnesium Deficiency"],
+      "relevant_keywords": ["new growth", "yellow", "green vein"],
+      "followup_answers": ["top of plant", "vein lines clear", "spreading down"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c08_var2",
+      "disease_group": "Iron Deficiency",
+      "query": "Developing leaves pale almost white but with dark veins",
+      "expected_disease": "Iron Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["pale", "white", "dark veins"],
+      "followup_answers": ["very young buds", "gets greener later", "seasonal"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c09_orig",
+      "disease_group": "White Stem Borer",
+      "query": "Stem has small holes with sawdust and branches drying",
+      "expected_disease": "White Stem Borer",
+      "plausible_alternatives": ["Coffee Wilt Disease"],
+      "relevant_keywords": ["stem holes", "sawdust", "branches drying"],
+      "followup_answers": ["Small stem holes visible", "Sawdust frass around holes", "Upper branches drying"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c09_var1",
+      "disease_group": "White Stem Borer",
+      "query": "Tunnels in branches with exit holes and yellow frass",
+      "expected_disease": "White Stem Borer",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["tunnels", "exit holes", "frass"],
+      "followup_answers": ["holes on bark", "yellow dust", "branches weak"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c09_var2",
+      "disease_group": "White Stem Borer",
+      "query": "Branch wilting with visible insect entry point and debris",
+      "expected_disease": "White Stem Borer",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["wilting", "entry point", "debris"],
+      "followup_answers": ["saw insect inside", "branch died", "wood damaged"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c10_orig",
+      "disease_group": "Coffee Wilt Disease",
+      "query": "Top branches wilting progressively and vascular tissue brown",
+      "expected_disease": "Coffee Wilt Disease",
+      "plausible_alternatives": ["Root Rot / Wilt Disease"],
+      "relevant_keywords": ["top wilting", "progressive", "vascular brown"],
+      "followup_answers": ["Started in top canopy", "Brown vascular discoloration", "No insect frass"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c10_var1",
+      "disease_group": "Coffee Wilt Disease",
+      "query": "Progressive wilt starting from canopy moving downward",
+      "expected_disease": "Coffee Wilt Disease",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["progressive", "canopy", "downward"],
+      "followup_answers": ["top first", "spreading down slowly", "veins brown inside"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c10_var2",
+      "disease_group": "Coffee Wilt Disease",
+      "query": "One branch wilting while rest of tree ok, wood discolored",
+      "expected_disease": "Coffee Wilt Disease",
+      "plausible_alternatives": ["White Stem Borer"],
+      "relevant_keywords": ["branch wilting", "wood discolored"],
+      "followup_answers": ["one side affected", "brown in stem", "slowly spreading"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c11_orig",
+      "disease_group": "Red Spider Mites",
+      "query": "Leaves have fine yellow speckles and bronze look with mites",
+      "expected_disease": "Red Spider Mites",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["yellow speckles", "bronze", "mites"],
+      "followup_answers": ["Fine yellow stippling visible", "Leaves bronze and dusty", "Tiny mites under leaves"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c11_var1",
+      "disease_group": "Red Spider Mites",
+      "query": "Leaves yellowing with webbing and tiny insects underneath",
+      "expected_disease": "Red Spider Mites",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["yellowing", "webbing", "insects"],
+      "followup_answers": ["web visible", "tiny bugs", "dusty look"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c11_var2",
+      "disease_group": "Red Spider Mites",
+      "query": "Dull papery leaves with stippling and mite damage visible",
+      "expected_disease": "Red Spider Mites",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["papery", "stippling", "mites"],
+      "followup_answers": ["leaves feel dry", "white specks", "webbing on stems"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c12_orig",
+      "disease_group": "Phoma Leaf Spot",
+      "query": "Leaf tips and margins turn large irregular brown dry patches",
+      "expected_disease": "Phoma Leaf Spot",
+      "plausible_alternatives": ["Brown Eye Spot"],
+      "relevant_keywords": ["leaf tips", "margins", "irregular brown"],
+      "followup_answers": ["Damage from edges", "Patches irregular dry", "No gray centers"],
+      "source": "original_v1"
+    },
+    {
+      "id": "c12_var1",
+      "disease_group": "Phoma Leaf Spot",
+      "query": "Angular brown lesions on leaf edges and corners",
+      "expected_disease": "Phoma Leaf Spot",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["angular", "brown", "edges"],
+      "followup_answers": ["sharp edges", "dark spots", "spreading from tip"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c12_var2",
+      "disease_group": "Phoma Leaf Spot",
+      "query": "Necrotic patches with sunken centers on leaf margins",
+      "expected_disease": "Phoma Leaf Spot",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["necrotic", "sunken", "margins"],
+      "followup_answers": ["purple border", "tissue dead", "starts at tips"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c13_var1",
+      "disease_group": "Potassium Deficiency",
+      "query": "Scorched edges on leaves that look burned",
+      "expected_disease": "Potassium Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["scorched", "burned", "edges"],
+      "followup_answers": ["margins brown", "looks burnt", "on old leaves"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c13_var2",
+      "disease_group": "Potassium Deficiency",
+      "query": "Leaf edges turning reddish-brown and rolling up",
+      "expected_disease": "Potassium Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["reddish-brown", "edges", "rolling"],
+      "followup_answers": ["curling down", "red marks", "crispy feel"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c14_var1",
+      "disease_group": "Boron Deficiency",
+      "query": "New growth twisted and deformed with terminal bud issues",
+      "expected_disease": "Boron Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["twisted", "deformed", "terminal bud"],
+      "followup_answers": ["top looks weird", "stunted growth", "leaves small"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c14_var2",
+      "disease_group": "Boron Deficiency",
+      "query": "Stem cracks and new leaves fail to expand properly",
+      "expected_disease": "Boron Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["stem cracks", "new leaves", "expand"],
+      "followup_answers": ["split stems", "leaves stuck", "no growth"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c15_var1",
+      "disease_group": "Zinc Deficiency",
+      "query": "Abnormally small leaves spaced far apart on stems",
+      "expected_disease": "Zinc Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["small leaves", "spaced far", "stems"],
+      "followup_answers": ["rosette appearance", "stunted", "alternating pattern"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c15_var2",
+      "disease_group": "Zinc Deficiency",
+      "query": "Bushy growth with shortened internodes and mottled leaves",
+      "expected_disease": "Zinc Deficiency",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["bushy", "shortened", "mottled"],
+      "followup_answers": ["compact plant", "yellow patterns", "not tall"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c16_var1",
+      "disease_group": "Leaf Miner Damage",
+      "query": "Whitish tunnels visible inside leaves like a maze",
+      "expected_disease": "Leaf Miner Damage",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["whitish tunnels", "maze"],
+      "followup_answers": ["see winding paths", "transparent areas", "damage visible"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "c16_var2",
+      "disease_group": "Leaf Miner Damage",
+      "query": "Blotchy discolored areas on leaves with irregular patterns",
+      "expected_disease": "Leaf Miner Damage",
+      "plausible_alternatives": [],
+      "relevant_keywords": ["blotchy", "discolored", "irregular"],
+      "followup_answers": ["see movement inside", "bleached spots", "on new leaves"],
+      "source": "natural_variation"
+    },
+    {
+      "id": "ambig01",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Brown spots with yellow halos that might be rust or eye spot",
+      "expected_disease": "Coffee Leaf Rust",
+      "plausible_alternatives": ["Brown Eye Spot", "Phoma Leaf Spot"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["orange powder", "gray center", "irregular border"],
+      "relevant_keywords": ["brown spots", "yellow halos"],
+      "followup_answers": ["orange powder underneath", "spots are circular", "undersurface mainly"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig02",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Yellowing leaves that could be nitrogen or iron deficiency",
+      "expected_disease": "Nitrogen Deficiency",
+      "plausible_alternatives": ["Iron Deficiency", "Magnesium Deficiency"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["uniform vs interveinal", "old vs new growth"],
+      "relevant_keywords": ["yellowing", "leaves"],
+      "followup_answers": ["uniform color throughout", "started on older leaves", "veins not greener"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig03",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Berry damage that could be borer or anthracnose",
+      "expected_disease": "Coffee Berry Borer",
+      "plausible_alternatives": ["Anthracnose"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["exit hole", "pink spores", "sunken"],
+      "relevant_keywords": ["berry damage", "spots"],
+      "followup_answers": ["small round hole visible", "no pink coating", "clean hole"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig04",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Wilting plant that could be root rot or wilt disease",
+      "expected_disease": "Root Rot / Wilt Disease",
+      "plausible_alternatives": ["Coffee Wilt Disease"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["sudden vs progressive", "whole vs partial", "root vs vascular"],
+      "relevant_keywords": ["wilting"],
+      "followup_answers": ["sudden onset", "whole plant affected", "roots mushy"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig05",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Branch drying that could be borer or wilt disease",
+      "expected_disease": "White Stem Borer",
+      "plausible_alternatives": ["Coffee Wilt Disease"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["holes", "sawdust", "vascular discoloration"],
+      "relevant_keywords": ["branch drying"],
+      "followup_answers": ["visible holes on stem", "sawdust around holes", "no brown veins"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig06",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Edge scorching that could be potassium or disease",
+      "expected_disease": "Potassium Deficiency",
+      "plausible_alternatives": ["Phoma Leaf Spot"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["uniform scorch", "no lesions", "pattern"],
+      "relevant_keywords": ["edge damage", "burning"],
+      "followup_answers": ["smooth scorched edge", "no fungal appearance", "all old leaves"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig07",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Vein yellowing could be magnesium or iron deficiency",
+      "expected_disease": "Magnesium Deficiency",
+      "plausible_alternatives": ["Iron Deficiency"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["old vs new", "vein green pattern"],
+      "relevant_keywords": ["vein", "yellowing"],
+      "followup_answers": ["oldest leaves first", "bright green veins", "spreading to young"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig08",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Circular spots that could be brown eye spot or rust variant",
+      "expected_disease": "Brown Eye Spot",
+      "plausible_alternatives": ["Coffee Leaf Rust", "Phoma Leaf Spot"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["gray center", "orange powder", "irregular"],
+      "relevant_keywords": ["circular spots"],
+      "followup_answers": ["gray center visible", "no powder", "brown edge"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig09",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Mite damage that looks similar to deficiency yellowing",
+      "expected_disease": "Red Spider Mites",
+      "plausible_alternatives": ["Nitrogen Deficiency"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["webbing", "mites", "bronze", "stippling"],
+      "relevant_keywords": ["yellowing", "mites"],
+      "followup_answers": ["see tiny insects", "webbing visible", "dusty look"],
+      "source": "ambiguous_case"
+    },
+    {
+      "id": "ambig10",
+      "disease_group": "AMBIGUOUS_MULTI_LABEL",
+      "query": "Bleached leaf areas could be miner or disease",
+      "expected_disease": "Leaf Miner Damage",
+      "plausible_alternatives": ["Brown Eye Spot"],
+      "disambiguation_required": true,
+      "disambiguation_keywords": ["tunnels", "winding pattern", "transparent"],
+      "relevant_keywords": ["bleached", "areas"],
+      "followup_answers": ["see tunnels inside", "white paths", "insect movement"],
+      "source": "ambiguous_case"
+    }
+  ],
+  "summary": {
+    "total_cases": 50,
+    "disease_groups": 16,
+    "cases_per_disease_avg": 3.1,
+    "ambiguous_cases": 10,
+    "linguistic_variations": 28,
+    "coverage": "All 15 major coffee diseases plus multi-label cases"
+  }
+}

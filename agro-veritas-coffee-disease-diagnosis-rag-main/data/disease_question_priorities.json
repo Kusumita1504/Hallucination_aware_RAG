@@ -1,0 +1,118 @@
+{
+  "version": "1.0",
+  "description": "Disease-specific question priorities for targeted diagnosis. Each disease has 5 priority questions ordered by diagnostic value.",
+  "priority_questions": {
+    "Coffee Leaf Rust": {
+      "priority_1": "Do you see orange or yellow powder on the undersurface of the leaves?",
+      "priority_2": "Are the affected spots circular with distinct yellow halos around them?",
+      "priority_3": "Did this start on the older, lower leaves first?",
+      "priority_4": "Can you see the powder easily wiping off if you touch it?",
+      "priority_5": "Are the affected leaves falling off prematurely?"
+    },
+    "Red Spider Mites": {
+      "priority_1": "Do you see tiny mites or fine webbing under the leaves?",
+      "priority_2": "Are the leaves looking bronzed, dusty, or dull rather than shiny?",
+      "priority_3": "Is there fine yellow or white stippling (tiny dots) on the leaf surface?",
+      "priority_4": "Do the leaves feel dry or papery to the touch?",
+      "priority_5": "Are the symptoms worse during hot, dry weather?"
+    },
+    "Brown Eye Spot": {
+      "priority_1": "Do the spots have a dark brown center with a gray ring around it?",
+      "priority_2": "Are the spots roughly circular with a distinct border?",
+      "priority_3": "Can you see a small dark dot (pycnidium) in the center of each spot?",
+      "priority_4": "Are the spots appearing mainly on older leaves?",
+      "priority_5": "Did the spots start as small, dark marks before enlarging?"
+    },
+    "Coffee Phoma Leaf Spot": {
+      "priority_1": "Do the spots look angular or irregular rather than perfectly round?",
+      "priority_2": "Are there small black dots (pycnidia) visible in the center of the spots?",
+      "priority_3": "Is there a reddish or purplish halo around the affected areas?",
+      "priority_4": "Are the affected areas sunken into the leaf surface?",
+      "priority_5": "Did the symptoms develop during or after periods of high moisture?"
+    },
+    "Cercospora Leaf Spot": {
+      "priority_1": "Do the spots have a reddish-brown or rust-colored appearance?",
+      "priority_2": "Are the spots more circular compared to other leaf spot diseases?",
+      "priority_3": "Is there a distinctive yellow halo surrounding each spot?",
+      "priority_4": "Can you see small dark fruiting bodies (acervuli) on the spots?",
+      "priority_5": "Are the symptoms more pronounced on shaded lower leaves?"
+    },
+    "Anthracnose": {
+      "priority_1": "Do you see sunken, dark lesions on the stems or twigs?",
+      "priority_2": "Are the lesions appearing as crescent-shaped or elongated marks?",
+      "priority_3": "Are there dark, tarry-looking cankers on the branches?",
+      "priority_4": "Is the affected plant material starting to wilt or die back?",
+      "priority_5": "Did the symptoms start from the branch tips and progress downward?"
+    },
+    "Root Rot / Wilt Disease": {
+      "priority_1": "Is the plant wilting even when the soil is moist?",
+      "priority_2": "Are the wilting symptoms appearing suddenly rather than gradually?",
+      "priority_3": "Do the roots look soft, mushy, or have a foul odor?",
+      "priority_4": "Is the base of the plant soft or showing dark discoloration?",
+      "priority_5": "Is the wilting affecting the entire plant or just some branches?"
+    },
+    "Nitrogen Deficiency": {
+      "priority_1": "Are the older leaves yellowing while the veins remain slightly green?",
+      "priority_2": "Is the yellowing starting from the tip and spreading toward the base of older leaves?",
+      "priority_3": "Are the newer leaves at the top still appearing green and healthy?",
+      "priority_4": "Is the yellowing affecting the entire leaf or just the areas between veins?",
+      "priority_5": "Did the plant look normal until recently when symptoms developed?"
+    },
+    "Iron Deficiency": {
+      "priority_1": "Are the newer leaves at the top showing yellowing first?",
+      "priority_2": "Do the affected leaves show yellow color but keep green veins?",
+      "priority_3": "Is the green vein pattern prominent against the yellow tissue?",
+      "priority_4": "Are the oldest leaves at the bottom still mostly green?",
+      "priority_5": "Are the younger growth shoots showing more severe symptoms?"
+    },
+    "Potassium Deficiency": {
+      "priority_1": "Do the leaf edges appear scorched or burned-looking?",
+      "priority_2": "Are the affected areas brown or reddish rather than yellow?",
+      "priority_3": "Is the scorching starting from the leaf margins and spreading inward?",
+      "priority_4": "Are the older leaves showing more severe edge symptoms?",
+      "priority_5": "Do the affected leaves feel brittle or dry?"
+    },
+    "Magnesium Deficiency": {
+      "priority_1": "Do you see yellowing between the veins (interveinal chlorosis)?",
+      "priority_2": "Are the veins remaining distinctly green while tissue between them yellows?",
+      "priority_3": "Is this pattern appearing on older leaves while newer growth looks normal?",
+      "priority_4": "Does the condition progress from lower to upper leaves?",
+      "priority_5": "Are multiple leaves showing this vein-pattern yellowing?"
+    },
+    "Boron Deficiency": {
+      "priority_1": "Is the new growth at the top of the plant looking deformed or twisted?",
+      "priority_2": "Are the youngest leaves appearing stunted or misshapen?",
+      "priority_3": "Is the stem or petiole (leaf stalk) showing cracks or splits?",
+      "priority_4": "Are the terminal buds (growing tips) appearing unhealthy or dying?",
+      "priority_5": "Does the plant show poor overall growth despite adequate water and nutrients?"
+    },
+    "Zinc Deficiency": {
+      "priority_1": "Are the new leaves appearing smaller and more spaced out on the stem?",
+      "priority_2": "Do the younger leaves show mottling or asymmetrical growth?",
+      "priority_3": "Is the leaf pattern showing as alternating small and normal-sized leaves?",
+      "priority_4": "Are the interveins showing yellowing on new leaves?",
+      "priority_5": "Does the plant show stunted, bushy growth with shortened internodes?"
+    },
+    "Bacterial Canker": {
+      "priority_1": "Do you see raised, corky lesions or cankers on the branches?",
+      "priority_2": "Is there a gummy or sticky exudate oozing from the affected areas?",
+      "priority_3": "Are the cankers roughly oval or elongated in shape?",
+      "priority_4": "Is the bark appearing cracked or splitting around the lesions?",
+      "priority_5": "Are the branches above the canker starting to wilt or die back?"
+    },
+    "Coffee Berry Borer": {
+      "priority_1": "Do you see small round holes in the berries (cherelles)?",
+      "priority_2": "Is there visible damage extending into the berry interior?",
+      "priority_3": "Are the damaged berries appearing soft or with dark discoloration?",
+      "priority_4": "Can you see the pest or tunneling inside the berry?",
+      "priority_5": "Are multiple berries on the plant showing similar exit holes?"
+    },
+    "Leaf Miner Damage": {
+      "priority_1": "Do you see whitish, winding tunnels or trails within the leaves?",
+      "priority_2": "Are the affected leaves showing blotchy, irregular patterns?",
+      "priority_3": "Can you see the affected areas as transparent or bleached sections?",
+      "priority_4": "Are the damaged leaves still attached or starting to drop?",
+      "priority_5": "Are the mine patterns more prominent on younger, newer leaves?"
+    }
+  }
+}

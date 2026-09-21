@@ -1,0 +1,149 @@
+{
+  "name": "coffee_diagnosis_eval_set_v1",
+  "cases": [
+    {
+      "id": "c01",
+      "query": "Yellow-orange powdery spots under leaves with yellow halos",
+      "expected_disease": "Coffee Leaf Rust",
+      "top3_expected": ["Coffee Leaf Rust", "Brown Eye Spot", "Phoma Leaf Spot"],
+      "relevant_keywords": ["orange", "powder", "undersurface", "yellow halos"],
+      "followup_answers": [
+        "Mostly on middle and lower leaves",
+        "Yes, orange powder is mainly under the leaves",
+        "It started around two weeks ago and is spreading"
+      ]
+    },
+    {
+      "id": "c02",
+      "query": "Uniform yellowing of older lower leaves, no distinct spots",
+      "expected_disease": "Nitrogen Deficiency",
+      "top3_expected": ["Nitrogen Deficiency", "Magnesium Deficiency", "Potassium Deficiency"],
+      "relevant_keywords": ["uniform yellowing", "older leaves", "no spots"],
+      "followup_answers": [
+        "Older lower leaves are affected first",
+        "No powder or insect holes, only yellowing",
+        "Growth is slow and leaves are generally pale"
+      ]
+    },
+    {
+      "id": "c03",
+      "query": "Yellowing between veins while veins stay green on older leaves",
+      "expected_disease": "Magnesium Deficiency",
+      "top3_expected": ["Magnesium Deficiency", "Iron Chlorosis", "Nitrogen Deficiency"],
+      "relevant_keywords": ["between veins", "veins green", "older leaves"],
+      "followup_answers": [
+        "This pattern is mostly on older leaves",
+        "Veins remain green while tissue between veins is yellow",
+        "No major spots or fungal powder seen"
+      ]
+    },
+    {
+      "id": "c04",
+      "query": "Small round holes at berry tip and berries shriveling",
+      "expected_disease": "Coffee Berry Borer",
+      "top3_expected": ["Coffee Berry Borer", "Anthracnose", "Scale Insects"],
+      "relevant_keywords": ["holes", "berry tip", "shriveling"],
+      "followup_answers": [
+        "Yes, tiny holes are at the berry end",
+        "Some berries are shriveled and drop early",
+        "I noticed powder-like frass near the hole"
+      ]
+    },
+    {
+      "id": "c05",
+      "query": "Dark brown sunken spots on green berries with pink mass in wet weather",
+      "expected_disease": "Anthracnose",
+      "top3_expected": ["Anthracnose", "Coffee Berry Borer", "Brown Eye Spot"],
+      "relevant_keywords": ["sunken spots", "green berries", "pink mass"],
+      "followup_answers": [
+        "Spots are sunken and dark on green berries",
+        "Pinkish spores appear when humidity is high",
+        "No boring holes were observed"
+      ]
+    },
+    {
+      "id": "c06",
+      "query": "Circular brown spots with pale gray center on leaves",
+      "expected_disease": "Brown Eye Spot",
+      "top3_expected": ["Brown Eye Spot", "Phoma Leaf Spot", "Coffee Leaf Rust"],
+      "relevant_keywords": ["circular spots", "gray center", "brown margin"],
+      "followup_answers": [
+        "Spots are round with gray center and brown edge",
+        "Mostly on leaves, not berries",
+        "No orange powder under leaves"
+      ]
+    },
+    {
+      "id": "c07",
+      "query": "Plant wilting suddenly even when soil has enough water, roots look brown",
+      "expected_disease": "Root Rot",
+      "top3_expected": ["Root Rot", "Coffee Wilt Disease", "White Stem Borer"],
+      "relevant_keywords": ["wilting", "enough water", "brown roots"],
+      "followup_answers": [
+        "Wilting continues even after irrigation",
+        "Roots are dark brown and soft",
+        "Decline started from the root zone"
+      ]
+    },
+    {
+      "id": "c08",
+      "query": "Young leaves are pale yellow while veins remain green",
+      "expected_disease": "Iron Chlorosis",
+      "top3_expected": ["Iron Chlorosis", "Magnesium Deficiency", "Nitrogen Deficiency"],
+      "relevant_keywords": ["young leaves", "pale yellow", "veins green"],
+      "followup_answers": [
+        "Young top leaves are affected first",
+        "Interveinal yellowing is clear with green veins",
+        "Older leaves look less affected"
+      ]
+    },
+    {
+      "id": "c09",
+      "query": "Stem has small holes with sawdust and branches drying",
+      "expected_disease": "White Stem Borer",
+      "top3_expected": ["White Stem Borer", "Coffee Wilt Disease", "Root Rot"],
+      "relevant_keywords": ["stem holes", "sawdust", "branches drying"],
+      "followup_answers": [
+        "Small stem holes are visible",
+        "Sawdust-like frass is around the holes",
+        "Upper branches are drying progressively"
+      ]
+    },
+    {
+      "id": "c10",
+      "query": "Top branches wilting progressively and vascular tissue turns brown",
+      "expected_disease": "Coffee Wilt Disease",
+      "top3_expected": ["Coffee Wilt Disease", "Root Rot", "White Stem Borer"],
+      "relevant_keywords": ["top wilting", "progressive", "vascular brown"],
+      "followup_answers": [
+        "Wilting started in top canopy and spread downward",
+        "Cut stems show brown vascular discoloration",
+        "No clear insect frass around stem holes"
+      ]
+    },
+    {
+      "id": "c11",
+      "query": "Leaves have fine yellow speckles and bronze look with tiny mites",
+      "expected_disease": "Red Spider Mites",
+      "top3_expected": ["Red Spider Mites", "Scale Insects", "Brown Eye Spot"],
+      "relevant_keywords": ["yellow speckles", "bronze", "mites"],
+      "followup_answers": [
+        "Fine yellow stippling is visible on leaves",
+        "Leaves look bronzed and dusty",
+        "Tiny mites/webbing are visible under leaves"
+      ]
+    },
+    {
+      "id": "c12",
+      "query": "Leaf tips and margins turn into large irregular brown dry patches",
+      "expected_disease": "Phoma Leaf Spot",
+      "top3_expected": ["Phoma Leaf Spot", "Brown Eye Spot", "Potassium Deficiency"],
+      "relevant_keywords": ["leaf tips", "margins", "irregular brown patches"],
+      "followup_answers": [
+        "Damage starts at leaf tips and margins",
+        "Patches are irregular and dry brown",
+        "Not seeing central gray circular lesions"
+      ]
+    }
+  ]
+}

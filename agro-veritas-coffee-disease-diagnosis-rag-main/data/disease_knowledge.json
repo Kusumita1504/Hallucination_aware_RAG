@@ -1,0 +1,593 @@
+{
+  "version": "1.0",
+  "region": "Karnataka, India",
+  "last_updated": "2024-01-15",
+  "diseases": [
+    {
+      "disease_id": "001",
+      "disease_name": "Coffee Leaf Rust",
+      "common_names": ["Hemileia vastatrix", "CLR", "Roya"],
+      "region": "Karnataka",
+      "severity": "High",
+      "symptoms": {
+        "description": "Yellow-orange powdery spots on undersurface of leaves. Spots are circular with pale yellow halos. Leaves fall prematurely causing defoliation.",
+        "pattern": "Circular spots 1-3 cm diameter with orange-yellow powder underneath",
+        "location": "Undersurface of older leaves first, spreading to younger leaves",
+        "color": "Orange-yellow powder on underside, yellow halos on top",
+        "progression": "Starts with small yellow spots, grows larger, develops orange powder, leaf falls off"
+      },
+      "causes": [
+        "Fungal spores spread by wind and rain",
+        "High humidity (above 70%) and moderate temperatures (20-25°C)",
+        "Dense canopy with poor air circulation",
+        "Monsoon season in Karnataka (June-September)"
+      ],
+      "treatment": [
+        "Apply copper-based fungicides (Bordeaux mixture 1% spray)",
+        "Systemic fungicides like Triadimefon or Propiconazole",
+        "Remove and burn infected leaves",
+        "Improve air circulation by pruning"
+      ],
+      "prevention": [
+        "Plant rust-resistant varieties (Sln.9, Sln.6)",
+        "Maintain proper spacing between plants",
+        "Regular monitoring during monsoon",
+        "Balanced fertilization to strengthen plants"
+      ],
+      "metadata": {
+        "symptom_type": "foliar_fungal",
+        "affected_parts": ["leaves"],
+        "season": "monsoon",
+        "diagnostic_confidence": "high",
+        "visibility": "visible_powder"
+      }
+    },
+    {
+      "disease_id": "002",
+      "disease_name": "Nitrogen Deficiency",
+      "common_names": ["N deficiency", "Nutrient deficiency"],
+      "region": "General",
+      "severity": "Medium",
+      "symptoms": {
+        "description": "Uniform pale yellowing of entire leaves, starting with older lower leaves. Plant growth is stunted with smaller leaves. No spots or patterns, just overall yellowing.",
+        "pattern": "Uniform yellowing across entire leaf, no spots or margins",
+        "location": "Lower and older leaves first, progressing upward to younger growth",
+        "color": "Pale yellow-green, uniform across leaf",
+        "progression": "Gradual yellowing over 2-3 weeks, leaves remain attached but pale"
+      },
+      "causes": [
+        "Insufficient nitrogen in soil from nutrient depletion",
+        "Leaching of nitrogen due to heavy monsoon rains",
+        "Poor soil organic matter content",
+        "Sandy soils with low nutrient retention"
+      ],
+      "treatment": [
+        "Apply nitrogen fertilizers: Urea (50-100g per plant)",
+        "Foliar spray with 0.5% urea solution (5g per liter water)",
+        "Add organic compost or vermicompost around base",
+        "Split application: apply small amounts monthly"
+      ],
+      "prevention": [
+        "Regular soil testing every 6 months",
+        "Balanced NPK fertilization (10:26:26 before monsoon)",
+        "Mulching with organic matter to reduce leaching",
+        "Cover crops or green manure during off-season"
+      ],
+      "metadata": {
+        "symptom_type": "nutritional",
+        "affected_parts": ["leaves", "overall_growth"],
+        "season": "any",
+        "diagnostic_confidence": "high",
+        "visibility": "uniform_yellowing"
+      }
+    },
+    {
+      "disease_id": "003",
+      "disease_name": "Magnesium Deficiency",
+      "common_names": ["Mg deficiency", "Interveinal chlorosis"],
+      "region": "General",
+      "severity": "Medium",
+      "symptoms": {
+        "description": "Yellowing between leaf veins while veins stay dark green. Creates a distinctive 'Christmas tree' pattern. Affects older leaves first.",
+        "pattern": "Interveinal chlorosis - yellow areas between veins, veins remain green",
+        "location": "Older mature leaves near the bottom, margins curl upward",
+        "color": "Yellow between veins, dark green veins create striped pattern",
+        "progression": "Starts with slight yellowing between veins, intensifies over weeks, margins may turn brown"
+      },
+      "causes": [
+        "Low magnesium in acidic Karnataka soils",
+        "Imbalance from excessive potassium or calcium application",
+        "Leaching in sandy or laterite soils",
+        "High rainfall washing away magnesium"
+      ],
+      "treatment": [
+        "Apply Magnesium sulfate (Epsom salt): 25-50g per plant",
+        "Foliar spray: 2% MgSO4 solution (20g per liter)",
+        "Apply dolomite lime (if soil is acidic): 200-300g per plant",
+        "Repeat every 2-3 weeks until recovery"
+      ],
+      "prevention": [
+        "Include magnesium in fertilizer schedule",
+        "Maintain soil pH between 6.0-6.5",
+        "Avoid excessive potassium fertilization",
+        "Regular leaf tissue analysis"
+      ],
+      "metadata": {
+        "symptom_type": "nutritional",
+        "affected_parts": ["leaves"],
+        "season": "any",
+        "diagnostic_confidence": "high",
+        "visibility": "interveinal_pattern"
+      }
+    },
+    {
+      "disease_id": "004",
+      "disease_name": "Coffee Berry Borer",
+      "common_names": ["Hypothenemus hampei", "Broca do café", "Berry borer"],
+      "region": "Karnataka",
+      "severity": "High",
+      "symptoms": {
+        "description": "Small round holes in coffee berries. Female beetle bores into berry and lays eggs inside. Berries shrivel and fall prematurely. Affects quality and yield.",
+        "pattern": "Single tiny hole (1-2mm) at the berry tip where it attaches",
+        "location": "Green or ripe berries, hole at crown end (berry top)",
+        "color": "Brown/black hole entrance, berry may discolor around hole",
+        "progression": "Hole appears, larvae feed inside, berry shrivels, falls within 1-2 weeks"
+      },
+      "causes": [
+        "Female beetle enters berry to lay eggs",
+        "Thrives in warm conditions (25-30°C)",
+        "Spreads from infected berries left on ground",
+        "Peak activity during berry development (Nov-Feb in Karnataka)"
+      ],
+      "treatment": [
+        "Spray Chlorpyriphos 20% EC (2ml per liter) during berry formation",
+        "Use pheromone traps to catch adult beetles",
+        "Strip-pick all berries (don't leave any on tree)",
+        "Collect fallen berries and destroy them"
+      ],
+      "prevention": [
+        "Harvest all berries cleanly, no leftovers",
+        "Remove dried berries from previous season",
+        "Install alcohol + methanol pheromone traps (10-15 per hectare)",
+        "Maintain field sanitation - no berries on ground"
+      ],
+      "metadata": {
+        "symptom_type": "pest_berry",
+        "affected_parts": ["berries", "fruit"],
+        "season": "berry_formation",
+        "diagnostic_confidence": "high",
+        "visibility": "visible_hole"
+      }
+    },
+    {
+      "disease_id": "005",
+      "disease_name": "Anthracnose",
+      "common_names": ["Colletotrichum kahawae", "CBD", "Coffee Berry Disease"],
+      "region": "Karnataka",
+      "severity": "High",
+      "symptoms": {
+        "description": "Dark brown to black sunken spots on green berries. Spots have distinct margins and may have pink spore masses in wet conditions. Berries shrivel and mummify.",
+        "pattern": "Circular dark brown lesions with sunken centers, 5-10mm diameter",
+        "location": "Green expanding berries (6-8 weeks after flowering)",
+        "color": "Dark brown to black spots, pink fungal mass in center when humid",
+        "progression": "Small brown spot appears, enlarges, becomes sunken, berry blackens and dries up"
+      },
+      "causes": [
+        "Colletotrichum fungus spreads by rain splash",
+        "High humidity and rainfall during berry development",
+        "Temperature 20-25°C ideal for fungus",
+        "Critical period: 4-10 weeks after flowering in Karnataka (Feb-April)"
+      ],
+      "treatment": [
+        "Apply copper fungicides (1% Bordeaux mixture) at pin-head berry stage",
+        "Use systemic fungicides: Carbendazim (1g per liter)",
+        "Spray every 2-3 weeks during berry expansion",
+        "Remove and destroy infected berries"
+      ],
+      "prevention": [
+        "Apply preventive copper sprays at early berry stage",
+        "Prune to improve air circulation and light penetration",
+        "Avoid overhead irrigation during flowering/berry formation",
+        "Plant resistant varieties if available"
+      ],
+      "metadata": {
+        "symptom_type": "fungal_berry",
+        "affected_parts": ["berries", "fruit"],
+        "season": "post_flowering",
+        "diagnostic_confidence": "high",
+        "visibility": "dark_spots"
+      }
+    },
+    {
+      "disease_id": "006",
+      "disease_name": "Brown Eye Spot",
+      "common_names": ["Cercospora coffeicola", "Leaf spot", "Cercospora"],
+      "region": "Karnataka",
+      "severity": "Medium",
+      "symptoms": {
+        "description": "Small circular brown spots with light gray or white centers and dark brown margins. Multiple spots per leaf give 'shot-hole' appearance when centers fall out.",
+        "pattern": "Circular spots 3-8mm with concentric rings: brown edge, white/gray center",
+        "location": "Both leaf surfaces, scattered across leaf blade",
+        "color": "Dark brown outer ring, pale gray or white center (bull's eye pattern)",
+        "progression": "Tiny brown dots appear, enlarge to circles with pale centers, centers may drop out leaving holes"
+      },
+      "causes": [
+        "Cercospora fungal spores spread by water splash",
+        "High humidity and leaf wetness",
+        "Poor air circulation in dense canopy",
+        "Weakened plants from nutrient stress"
+      ],
+      "treatment": [
+        "Spray copper oxychloride (3g per liter water)",
+        "Use systemic fungicides: Propiconazole (1ml per liter)",
+        "Remove heavily infected leaves",
+        "Improve nutrition with balanced NPK"
+      ],
+      "prevention": [
+        "Regular pruning for air circulation",
+        "Avoid excessive shade",
+        "Proper plant spacing (2-2.5m apart)",
+        "Preventive copper sprays during monsoon"
+      ],
+      "metadata": {
+        "symptom_type": "foliar_fungal",
+        "affected_parts": ["leaves"],
+        "season": "monsoon",
+        "diagnostic_confidence": "medium",
+        "visibility": "spotted_pattern"
+      }
+    },
+    {
+      "disease_id": "007",
+      "disease_name": "Root Rot",
+      "common_names": ["Rhizoctonia solani", "Root disease", "Damping off"],
+      "region": "Karnataka",
+      "severity": "High",
+      "symptoms": {
+        "description": "Sudden wilting of entire plant despite adequate soil moisture. Leaves remain attached but droop. Roots are brown, soft, and rotting. Plant eventually dies.",
+        "pattern": "Wilting starts at top, entire plant affected uniformly",
+        "location": "Roots (underground symptoms), wilting visible above ground on entire plant",
+        "color": "Brown to black rotting roots, normal green leaves that wilt and droop",
+        "progression": "Plant wilts suddenly in 3-5 days, roots rot, plant collapses and dies"
+      },
+      "causes": [
+        "Fungal infection of roots (Rhizoctonia, Fusarium, Pythium)",
+        "Waterlogged soil with poor drainage",
+        "Overwatering or heavy rainfall without drainage",
+        "Soil-borne fungi in poorly drained areas"
+      ],
+      "treatment": [
+        "Stop watering, improve drainage immediately",
+        "Drench soil with Carbendazim (2g per liter) around root zone",
+        "Apply Trichoderma bio-fungicide to soil",
+        "Remove mulch to dry out soil surface",
+        "Severely affected plants: remove and destroy"
+      ],
+      "prevention": [
+        "Ensure proper drainage in planting beds",
+        "Avoid overwatering, especially during monsoon",
+        "Raise beds or plant on slopes in high-rainfall areas",
+        "Apply Trichoderma to soil before planting"
+      ],
+      "metadata": {
+        "symptom_type": "root_fungal",
+        "affected_parts": ["roots", "overall_plant"],
+        "season": "monsoon",
+        "diagnostic_confidence": "medium",
+        "visibility": "wilting_plant"
+      }
+    },
+    {
+      "disease_id": "008",
+      "disease_name": "Iron Chlorosis",
+      "common_names": ["Iron deficiency", "Lime-induced chlorosis"],
+      "region": "General",
+      "severity": "Low",
+      "symptoms": {
+        "description": "Young leaves turn pale yellow while veins remain green. Severe cases lead to whitish leaves. Older leaves stay normal green. Growth is stunted.",
+        "pattern": "Interveinal chlorosis on young leaves, veins stay green",
+        "location": "Youngest leaves at shoot tips, while older leaves remain green",
+        "color": "Pale yellow to whitish between veins, veins remain bright green",
+        "progression": "Young leaves emerge pale yellow, severe cases turn almost white, growth slows"
+      },
+      "causes": [
+        "Alkaline soil pH (above 7.0) locks up iron",
+        "High calcium or limestone in Karnataka laterite soils",
+        "Poor iron uptake even if iron present in soil",
+        "Overwatering can worsen iron deficiency"
+      ],
+      "treatment": [
+        "Apply iron chelate (FeSO4 or FeEDDHA) to soil: 10-20g per plant",
+        "Foliar spray: 0.5% ferrous sulfate solution (5g per liter)",
+        "Lower soil pH by applying sulfur: 50-100g per plant",
+        "Improve drainage if waterlogging is present"
+      ],
+      "prevention": [
+        "Maintain soil pH 5.5-6.5 (acidic)",
+        "Apply sulfur annually to prevent pH rise",
+        "Avoid excessive lime or calcium amendments",
+        "Regular soil pH testing"
+      ],
+      "metadata": {
+        "symptom_type": "nutritional",
+        "affected_parts": ["leaves"],
+        "season": "any",
+        "diagnostic_confidence": "high",
+        "visibility": "young_leaf_yellowing"
+      }
+    },
+    {
+      "disease_id": "009",
+      "disease_name": "White Stem Borer",
+      "common_names": ["Xylotrechus quadripes", "Stem borer", "Branch borer"],
+      "region": "Karnataka",
+      "severity": "High",
+      "symptoms": {
+        "description": "Sudden wilting and drying of branches or entire plant. Small holes in stem with sawdust-like frass. Bark may peel off showing tunnels underneath. Young plants most affected.",
+        "pattern": "Entry holes (2-3mm) in main stem or branches with sawdust around them",
+        "location": "Main stem (20-50cm from ground level) or primary branches",
+        "color": "Brown entry holes, white sawdust (frass) outside, tunnels visible under bark",
+        "progression": "Holes appear, branches wilt above damage point, bark cracks, plant may die"
+      },
+      "causes": [
+        "Beetle larvae bore into stem and feed inside",
+        "Adult beetles lay eggs in bark cracks",
+        "Affects weakened or stressed plants more",
+        "Active during dry season (Dec-March in Karnataka)"
+      ],
+      "treatment": [
+        "Insert wire into holes to kill larvae mechanically",
+        "Inject insecticide (Chlorpyriphos) into holes with cotton plug",
+        "Apply Monocrotophos paste around holes",
+        "Cut and burn severely affected branches"
+      ],
+      "prevention": [
+        "Regular inspection of stems, especially young plants",
+        "Apply whitewash (lime) to main stem as barrier",
+        "Maintain plant health with proper nutrition",
+        "Remove and burn infested branches immediately"
+      ],
+      "metadata": {
+        "symptom_type": "pest_stem",
+        "affected_parts": ["stem", "branches"],
+        "season": "dry_season",
+        "diagnostic_confidence": "high",
+        "visibility": "holes_frass"
+      }
+    },
+    {
+      "disease_id": "010",
+      "disease_name": "Coffee Wilt Disease",
+      "common_names": ["Fusarium wilt", "Tracheomycosis", "Vascular wilt"],
+      "region": "Karnataka",
+      "severity": "Very High",
+      "symptoms": {
+        "description": "Progressive wilting starting from top branches, leaves dry but remain attached. Yellowing and leaf drop follows. Vascular tissue shows brown discoloration when stem is cut. Plant dies within months.",
+        "pattern": "Wilting starts at top, progresses downward, one side often worse than other",
+        "location": "Starts at shoot tips, moves down, often asymmetric (one side first)",
+        "color": "Yellow-brown wilted leaves, brown streaks inside vascular tissue when stem cut",
+        "progression": "Top leaves wilt, yellowing spreads downward over 2-3 months, plant dies"
+      },
+      "causes": [
+        "Fusarium fungus blocks vascular system (water transport)",
+        "Spreads through soil, infected tools, or planting material",
+        "Enters through root wounds or root-knot nematode damage",
+        "No cure once systemic infection established"
+      ],
+      "treatment": [
+        "No effective chemical treatment available",
+        "Uproot and burn infected plants immediately",
+        "Do not replant coffee in same spot for 2-3 years",
+        "Disinfect tools with bleach solution after each plant"
+      ],
+      "prevention": [
+        "Plant resistant varieties (Sln.274, Kaveri)",
+        "Use certified disease-free planting material",
+        "Manage root-knot nematodes (soil treatment)",
+        "Quarantine new plants before introducing to field"
+      ],
+      "metadata": {
+        "symptom_type": "vascular_fungal",
+        "affected_parts": ["vascular_system", "overall_plant"],
+        "season": "any",
+        "diagnostic_confidence": "high",
+        "visibility": "progressive_wilting"
+      }
+    },
+    {
+      "disease_id": "011",
+      "disease_name": "Red Spider Mites",
+      "common_names": ["Oligonychus coffeae", "Coffee mite", "Leaf mite"],
+      "region": "Karnataka",
+      "severity": "Medium",
+      "symptoms": {
+        "description": "Fine yellow speckles on leaves giving bronzed appearance. Undersurface has fine webbing and tiny red/brown mites. Leaves become dull and may drop. Severe in dry weather.",
+        "pattern": "Stippled yellow dots covering leaf surface, bronze discoloration",
+        "location": "Upper and lower leaf surfaces, especially older leaves",
+        "color": "Yellow speckles, bronze or copper tint overall, mites are red-brown (visible with lens)",
+        "progression": "Starts with few speckles, spreads to cover leaf, bronze tint develops, leaf drops"
+      },
+      "causes": [
+        "Mites suck sap from leaf undersurface",
+        "Dry weather and low humidity favor mites",
+        "Peak activity in dry season (Jan-April in Karnataka)",
+        "Spread by wind or contact between leaves"
+      ],
+      "treatment": [
+        "Spray Dicofol 18.5% EC (2.5ml per liter water)",
+        "Use Propargite 57% EC (2ml per liter)",
+        "Apply sulfur dust or wettable sulfur spray",
+        "Repeat spray after 10-15 days if infestation persists"
+      ],
+      "prevention": [
+        "Maintain adequate shade (reduces dry stress)",
+        "Regular sprinkler irrigation to increase humidity",
+        "Avoid excessive nitrogen (soft growth attracts mites)",
+        "Monitor regularly during dry season"
+      ],
+      "metadata": {
+        "symptom_type": "pest_foliar",
+        "affected_parts": ["leaves"],
+        "season": "dry_season",
+        "diagnostic_confidence": "medium",
+        "visibility": "stippled_bronze"
+      }
+    },
+    {
+      "disease_id": "012",
+      "disease_name": "Phoma Leaf Spot",
+      "common_names": ["Phoma costarricensis", "Leaf blight"],
+      "region": "Karnataka",
+      "severity": "Low",
+      "symptoms": {
+        "description": "Large irregular brown blotches on leaves, often starting at leaf tip or margin. Spots coalesce to form large dead areas. Affected tissue becomes brittle and papery.",
+        "pattern": "Irregular brown patches 1-3cm, often V-shaped from tip",
+        "location": "Leaf tips and margins, spreads inward",
+        "color": "Brown to dark brown, dead tissue, no distinct border",
+        "progression": "Brown area starts at tip/margin, expands inward, leaf tissue dies and becomes dry"
+      },
+      "causes": [
+        "Phoma fungus enters through wounds or natural openings",
+        "Associated with wet conditions and mechanical damage",
+        "Hail damage or wind-whipping predisposes leaves",
+        "Common after storms in Karnataka monsoon"
+      ],
+      "treatment": [
+        "Apply copper fungicide (Copper oxychloride 3g per liter)",
+        "Remove badly affected leaves",
+        "Improve plant nutrition to promote new growth",
+        "Usually self-limiting, may not need aggressive treatment"
+      ],
+      "prevention": [
+        "Provide windbreaks to reduce mechanical damage",
+        "Proper spacing and pruning for air circulation",
+        "Avoid working in plantations when leaves are wet",
+        "Maintain plant vigor with balanced fertilization"
+      ],
+      "metadata": {
+        "symptom_type": "foliar_fungal",
+        "affected_parts": ["leaves"],
+        "season": "monsoon",
+        "diagnostic_confidence": "low",
+        "visibility": "tip_margin_browning"
+      }
+    },
+    {
+      "disease_id": "013",
+      "disease_name": "Potassium Deficiency",
+      "common_names": ["K deficiency", "Marginal necrosis"],
+      "region": "General",
+      "severity": "Medium",
+      "symptoms": {
+        "description": "Yellowing and browning of leaf margins (edges) while center stays green. Margins become brown and crispy (necrotic). Affects older leaves first. Berries may be smaller.",
+        "pattern": "Marginal chlorosis and necrosis - yellow/brown edges, green center",
+        "location": "Leaf margins/edges, older leaves at bottom first",
+        "color": "Yellow margins turning brown and crispy, green leaf center",
+        "progression": "Margins yellow, turn brown and dry, curl upward, entire margin becomes necrotic"
+      },
+      "causes": [
+        "Low potassium in soil or imbalanced fertilization",
+        "Excessive nitrogen or calcium interferes with K uptake",
+        "Leaching in sandy Karnataka soils during heavy rains",
+        "High potassium demand during berry development"
+      ],
+      "treatment": [
+        "Apply potassium sulfate (50-100g per plant)",
+        "Foliar spray: 1% K2SO4 or potassium nitrate",
+        "Apply wood ash around base (natural potassium source)",
+        "Split dose application during berry formation"
+      ],
+      "prevention": [
+        "Balanced NPK fertilization (include potassium in schedule)",
+        "Extra potassium during berry development (Nov-Feb)",
+        "Mulching to reduce leaching",
+        "Regular soil testing for nutrient balance"
+      ],
+      "metadata": {
+        "symptom_type": "nutritional",
+        "affected_parts": ["leaves"],
+        "season": "any",
+        "diagnostic_confidence": "high",
+        "visibility": "marginal_necrosis"
+      }
+    },
+    {
+      "disease_id": "014",
+      "disease_name": "Scale Insects",
+      "common_names": ["Green scale", "Coccus viridis", "Soft scale"],
+      "region": "Karnataka",
+      "severity": "Medium",
+      "symptoms": {
+        "description": "Small green or brown bumps attached to stems and leaf undersides. Sticky honeydew on leaves attracts black sooty mold. Leaves yellow and plant weakens. Ants often present farming scales.",
+        "pattern": "Clustered oval bumps (2-4mm) on stems and leaves",
+        "location": "Young stems, leaf petioles, undersurface of leaves",
+        "color": "Green, brown, or white waxy scales, black sooty mold on leaves below",
+        "progression": "Few scales appear, multiply rapidly, honeydew drips down, black mold grows, leaves yellow"
+      },
+      "causes": [
+        "Scales suck sap from plant tissue",
+        "Spread by ants which farm them for honeydew",
+        "Shady humid conditions favor scale buildup",
+        "More common in poorly maintained plantations"
+      ],
+      "treatment": [
+        "Spray horticultural oil (2%) to suffocate scales",
+        "Use systemic insecticides: Dimethoate (2ml per liter)",
+        "Spray insecticidal soap on light infestations",
+        "Control ants to prevent scale farming"
+      ],
+      "prevention": [
+        "Prune to improve air circulation and light",
+        "Monitor regularly and treat early infestations",
+        "Encourage natural predators (lady beetles)",
+        "Ant barriers around tree base (sticky tape or grease)"
+      ],
+      "metadata": {
+        "symptom_type": "pest_foliar",
+        "affected_parts": ["stems", "leaves"],
+        "season": "any",
+        "diagnostic_confidence": "medium",
+        "visibility": "visible_bumps"
+      }
+    },
+    {
+      "disease_id": "015",
+      "disease_name": "Zinc Deficiency",
+      "common_names": ["Zn deficiency", "Little leaf", "Rosette"],
+      "region": "General",
+      "severity": "Low",
+      "symptoms": {
+        "description": "New leaves are small, narrow, and distorted. Internodes (stem between leaves) are shortened creating bunched appearance. Leaves may show interveinal yellowing. Growth is stunted.",
+        "pattern": "Small narrow leaves clustered together, shortened stem between leaves",
+        "location": "New growth at shoot tips, older leaves normal",
+        "color": "Pale green to yellow new leaves, may have yellow between veins",
+        "progression": "New leaves emerge small and narrow, internodes don't elongate, rosette pattern forms"
+      },
+      "causes": [
+        "Low zinc in alkaline Karnataka soils",
+        "High phosphorus application interferes with zinc uptake",
+        "Low organic matter in soil",
+        "Common in newly cleared or degraded soils"
+      ],
+      "treatment": [
+        "Apply zinc sulfate (ZnSO4) to soil: 10-20g per plant",
+        "Foliar spray: 0.5% zinc sulfate solution (5g per liter)",
+        "Add zinc to regular fertilizer schedule",
+        "Response visible in new growth within 2-3 weeks"
+      ],
+      "prevention": [
+        "Include zinc in micronutrient spray (chelated zinc)",
+        "Maintain adequate organic matter in soil",
+        "Avoid excessive phosphorus fertilization",
+        "Preventive zinc spray during active growth"
+      ],
+      "metadata": {
+        "symptom_type": "nutritional",
+        "affected_parts": ["leaves", "shoot_tips"],
+        "season": "any",
+        "diagnostic_confidence": "medium",
+        "visibility": "small_leaves"
+      }
+    }
+  ]
+}

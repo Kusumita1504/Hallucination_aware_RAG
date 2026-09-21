@@ -1,0 +1,43 @@
+# Environment files
+.env
+.env.local
+.env.example
+.venv
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Streamlit cache
+.streamlit/
+.cache/
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vector database (will be generated)
+vector_db/
+*.bin
+
+# Logs
+*.log
+
+# Compiled files
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
