@@ -35,6 +35,7 @@ def run_unit_tests() -> int:
         [
             sys.executable, "-m", "pytest",
             "test/unit/",
+            "test/api/",
             "-v",
             "--tb=short",
             "-m", "not slow and not integration and not regression",

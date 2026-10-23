@@ -1,0 +1,15 @@
+.git
+.env
+.env.*
+!.env.example
+.venv
+venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.ruff_cache
+*.log
+data/vector_db/
+data/vector_db_json/
+test/results/

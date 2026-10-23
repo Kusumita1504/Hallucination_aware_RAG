@@ -29,6 +29,7 @@ import re
 import sys
 import time
 import argparse
+from datetime import datetime, timezone
 import numpy as np
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -418,6 +419,10 @@ def evaluate(dataset_path: str, fast: bool = False) -> Dict:
     # ── Aggregate ────────────────────────────────────────────────────────────
     total = len(cases)
     metrics = {
+        "data_source": "labeled_evaluation",
+        "dataset": Path(dataset_path).name,
+        "evaluated_at": datetime.now(timezone.utc).isoformat(),
+        "evaluated_at_unix": time.time(),
         "total_cases": total,
         "fast_mode": fast,
         "semantic_available": SEMANTIC_AVAILABLE,
@@ -548,6 +553,6 @@ if __name__ == "__main__":
     results_dir.mkdir(exist_ok=True)
     suffix = "_fast" if args.fast else ""
     out_path = results_dir / f"evaluation_v2_results{suffix}.json"
-    with open(out_path, "w") as f:
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2, default=str)
     print(f"✅ Results saved to {out_path}\n")

@@ -36,6 +36,7 @@ class RetrievalEvaluator:
             scored_chunks.append({
                 'content': chunk['content'],
                 'source': chunk['source'],
+                'source_type': chunk.get('source_type', 'PDF'),
                 'metadata': chunk.get('metadata', {}),
                 'relevance_score': score
             })

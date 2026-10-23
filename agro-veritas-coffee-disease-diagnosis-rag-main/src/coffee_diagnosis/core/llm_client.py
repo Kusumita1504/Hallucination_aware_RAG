@@ -1,5 +1,6 @@
 from typing import List, Dict, Optional, Any
 import os
+from config import settings
 from openai import OpenAI
 from anthropic import Anthropic
 
@@ -18,19 +19,20 @@ class LLMClient:
         base_url: Optional[str] = None,
     ):
         self.provider = (provider or os.getenv("LLM_PROVIDER", "openai_local")).lower()
+        timeout = settings.LLM_TIMEOUT_SECONDS
 
         if self.provider.startswith("anthropic"):
             key = api_key or os.getenv("ANTHROPIC_API_KEY")
             if not key:
                 raise ValueError("ANTHROPIC_API_KEY not set. Please add it to .env")
-            self.client = Anthropic(api_key=key)
+            self.client = Anthropic(api_key=key, timeout=timeout)
             self.model = model or os.getenv("CLAUDE_MODEL", "claude-3-haiku-20240307")
             self.mode = "anthropic"
         else:
             # Default to local OpenAI-compatible endpoint (e.g., Ollama)
             base = base_url or os.getenv("LLM_BASE_URL", "http://localhost:11434/v1")
             key = api_key or os.getenv("LLM_API_KEY", "ollama")
-            self.client = OpenAI(base_url=base, api_key=key)
+            self.client = OpenAI(base_url=base, api_key=key, timeout=timeout)
             self.model = model or os.getenv("LLM_MODEL", "phi3")
             self.mode = "openai"
 

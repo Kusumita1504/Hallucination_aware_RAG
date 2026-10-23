@@ -34,6 +34,12 @@ vector_db/
 
 # Logs
 *.log
+data/incidents.sqlite3
+data/incidents.sqlite3-shm
+data/incidents.sqlite3-wal
+data/slack_events.sqlite3
+data/slack_events.sqlite3-shm
+data/slack_events.sqlite3-wal
 
 # Compiled files
 *.pyc

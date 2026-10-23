@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit-and-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run fast unit and API tests
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+        run: python -m pytest test/unit test/api -q
+
+  deployment-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate deployment manifests
+        run: |
+          python -m pip install PyYAML
+          python -c "import json, pathlib; json.loads(pathlib.Path('deploy/grafana/dashboards/coffee-guard.json').read_text())"
+          python -c "import yaml, pathlib; [yaml.safe_load(pathlib.Path(p).read_text()) for p in ['deploy/prometheus/prometheus.yml', 'deploy/grafana/provisioning/datasources/prometheus.yml', 'deploy/grafana/provisioning/dashboards/dashboards.yml']]"
+      - name: Validate Docker Compose
+        env:
+          GRAFANA_ADMIN_PASSWORD: ci-only-not-a-secret
+        run: docker compose config --quiet

@@ -293,3 +293,157 @@ ollama list
 
 This system is a research prototype for decision support. It should be used with agronomic judgment and local field validation before operational deployment.
 
+## 14. CoffeeGuard API and Operations Platform
+
+The existing Streamlit diagnosis UI and RAG controller remain in place. The API calls the same multi-turn controller and hybrid FAISS/JSON/PDF retrieval, CRAG filtering, diagnosis generation, and hallucination verification; it does not replace the diagnosis pipeline.
+
+### Architecture
+
+- `src/coffee_diagnosis/api/`: FastAPI endpoints, input schemas, per-session orchestration, Prometheus metrics, SQLite incident tracking, threshold monitoring, and support-agent tools.
+- `src/coffee_diagnosis/mcp_server.py`: separate stdio MCP server. It exposes diagnosis and support tools and can combine multiple read-only tools for investigations.
+- `data/runbooks/`: operational troubleshooting references. Disease evidence continues to come from the existing JSON and PDF retrieval path.
+- `deploy/prometheus/` and `deploy/grafana/`: scrape configuration and provisioned operational dashboard.
+- `docker-compose.yml`: API, existing Streamlit interface, Prometheus, Grafana, and an optional MCP profile.
+
+The API serializes access to the shared retrieval engine while preserving separate conversation state and clarification history for each session. The controller/model is initialized lazily on the first diagnosis or disease-document search; first-run FAISS model/index initialization can take time.
+
+### Local API setup
+
+Use Python 3.11 and install the project dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+python -m uvicorn coffee_diagnosis.api.app:app --app-dir src --host 127.0.0.1 --port 8000
+```
+
+The original UI remains available separately:
+
+```bash
+python -m streamlit run ui/streamlit_app.py
+```
+
+Useful endpoints:
+
+| Method | Path | Purpose |
+|---|---|---|
+| `GET` | `/health/live` | Process liveness |
+| `GET` | `/health/ready` | Required local knowledge-file readiness |
+| `GET` | `/metrics` | Prometheus scrape endpoint |
+| `POST` | `/api/v1/diagnosis` | Start a diagnosis session; body `{"query":"orange powder under coffee leaves"}` |
+| `POST` | `/api/v1/diagnosis/{session_id}/answers` | Continue a multi-turn diagnosis; body `{"answer":"mostly older leaves"}` |
+| `DELETE` | `/api/v1/diagnosis/{session_id}` | Remove a conversation session |
+| `GET` | `/api/v1/telemetry` | Current measured request-window summary |
+| `GET` | `/api/v1/errors/recent` | Recent 5xx metadata (no request bodies) |
+| `POST` | `/api/v1/knowledge/search` | Search disease documents and operational runbooks |
+| `POST` | `/api/v1/support/investigate` | Combine health, errors, knowledge, and incident history |
+| `GET/POST` | `/api/v1/incidents` | List or manually create incidents |
+| `POST` | `/api/v1/incidents/{id}/acknowledge` | Acknowledge an incident |
+| `POST` | `/api/v1/incidents/{id}/resolve` | Record a human-entered resolution |
+| `POST` | `/api/v1/slack/commands` | Optional signed Slack slash-command endpoint |
+
+Example diagnosis flow:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/diagnosis ^
+  -H "Content-Type: application/json" ^
+  -d "{\"query\":\"orange powder under coffee leaves\"}"
+```
+
+Continue with the returned `session_id` and the generated question:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/diagnosis/SESSION_ID/answers ^
+  -H "Content-Type: application/json" ^
+  -d "{\"answer\":\"mostly on older leaves\"}"
+```
+
+For PowerShell, replace the shell continuation character (`^`) with a backtick or issue the command on one line.
+
+### Environment configuration
+
+Copy `.env.example` to `.env` for Compose interpolation and set a private `GRAFANA_ADMIN_PASSWORD`. Never commit `.env` or Slack/LLM credentials. LLM settings preserve the existing local OpenAI-compatible endpoint defaults; hosted integrations remain optional.
+
+Important configuration includes:
+
+- `LLM_TIMEOUT_SECONDS`: upper bound for each provider request.
+- `API_MAX_REQUEST_BYTES`, `API_MAX_SESSIONS`, `API_SESSION_TTL_SECONDS`: API body and session limits.
+- `INCIDENT_ERROR_RATE_THRESHOLD`, `INCIDENT_LATENCY_THRESHOLD_SECONDS`, `INCIDENT_WINDOW_SECONDS`, `INCIDENT_MIN_REQUESTS`: measured request SLI alert rules.
+- `INCIDENT_DB_PATH`: SQLite incident state path.
+- `SUPPORT_LLM_ENABLED`: enable optional support-summary generation; disabled by default. Grounded template summaries remain available without an LLM.
+- `SLACK_SIGNING_SECRET`: enables signed commands. `SLACK_BOT_TOKEN` and `SLACK_CHANNEL_ID` additionally enable incident notifications.
+- `DIAGNOSIS_EVALUATION_FILE`: optional path to a generated labeled-evaluation result JSON.
+
+### Observability and data provenance
+
+The API exports request counters, error counters, latency histograms, diagnosis outcomes, retrieval outcomes, and current incident counts. Grafana shows request volume, p50/p95/p99 latency, HTTP errors, diagnosis outcomes, retrieval outcomes, and incidents.
+
+Live prediction results are **not** treated as verified labels. Diagnosis quality panels remain absent until `DIAGNOSIS_EVALUATION_FILE` points to a result produced by `python test/evaluate_v2.py`; the evaluator writes `data_source: labeled_evaluation`, the dataset name, evaluation time, and case count into its result. The API rejects result files without that provenance or out-of-range metrics. Run evaluation explicitly:
+
+```bash
+python test/evaluate_v2.py --dataset test/evaluation_dataset_v2.json
+```
+
+Then set `DIAGNOSIS_EVALUATION_FILE=test/results/evaluation_v2_results.json` and restart the API. With Compose, the results directory is a persistent volume; run the evaluator in the API container with `docker compose exec api python test/evaluate_v2.py --dataset test/evaluation_dataset_v2.json`, set the same path in `.env`, and recreate the API. The evaluator requires a functioning local/hosted model and embedding dependencies. No evaluation result is bundled or generated from live API traffic.
+
+Request-window telemetry and threshold incidents are real observations from requests received by that process. They are labeled `measured_request_telemetry` with `simulated: false`; the platform does not seed fabricated incidents or benchmark values. Prometheus counters are process-local and reset on restart.
+
+### Grafana and Docker Compose
+
+Set the Grafana password as described above, then run:
+
+```bash
+docker compose up --build
+```
+
+Services:
+
+- API: <http://localhost:8000>
+- Existing Streamlit UI: <http://localhost:8501>
+- Prometheus: <http://localhost:9090>
+- Grafana: <http://localhost:3000> (username defaults to `admin`; use the password from `.env`)
+
+The CoffeeGuard dashboard is provisioned automatically. Prometheus starts scraping when the API is available; dashboard panels have no live history until requests have occurred. To start the standalone MCP server in Compose, use `docker compose --profile mcp run --rm mcp`. The model endpoint from a container defaults to `host.docker.internal:11434`; adjust it if Ollama runs elsewhere.
+
+### MCP tools
+
+The stdio MCP server provides `diagnose`, `submit_diagnosis_answer`, `knowledge_search`, `service_health`, `recent_errors`, `incident_history`, and `investigate`. Tools validate bounded inputs, return structured objects, and report unavailable services explicitly. A client can call multiple tools or call `investigate` to combine their results.
+
+Run locally from the project root:
+
+```bash
+python -m coffee_diagnosis.mcp_server
+```
+
+When using a stdio MCP client, set its working directory to the project and set `PYTHONPATH` to the project's `src` directory.
+
+### Slack commands and notifications
+
+Configure `SLACK_SIGNING_SECRET` to enable `/api/v1/slack/commands`. Slack requests are HMAC signature-checked with a five-minute timestamp window by default, and `trigger_id` is deduplicated in a local SQLite store. Supported slash-command syntax:
+
+- `/coffee diagnose <symptoms>`
+- `/coffee health`
+- `/coffee runbook <query>`
+- `/coffee incidents [query]`
+
+Set a bot token and channel ID to deliver incident notifications with severity, evidence, current status, and dashboard link. Without credentials, the command endpoint is disabled and notifications are skipped. Configure the Slack app to send slash commands to the endpoint URL over HTTPS; use the official Slack signing secret, not a hard-coded token.
+
+### Incident workflows and safety
+
+Incidents are stored in SQLite and can be opened manually or automatically when the configured measured 5xx rate or p95 request latency threshold is reached. Records include the observed window, measured values, request IDs/status metadata, and dashboard link. Operators can acknowledge incidents and add a resolution. There is no remediation execution tool or endpoint: AI summaries are advisory, and operational changes require explicit human approval outside this service.
+
+### Tests, CI, and limitations
+
+Run the fast tests (no live LLM required):
+
+```bash
+python -m pytest test/unit test/api -q
+```
+
+The GitHub Actions workflow runs these unit/API tests and validates deployment manifests. The existing integration and benchmark suites are still available but require model/dependency setup and can be slow:
+
+```bash
+python test/run_tests.py --integration
+python test/evaluate_v2.py --dataset test/evaluation_dataset_v2.json
+```
+
+This remains a single-process research deployment: session state is in memory, while incident and Slack deduplication records use SQLite. Horizontal scaling requires shared session/telemetry storage and coordination. API authentication, authorization, production secrets management, retention policies, and deployment-specific network controls must be supplied before public deployment. Slack is optional; MCP uses stdio and is intended to be launched by a trusted local MCP host. Diagnosis remains a decision-support aid and should be reviewed by an agronomist.
