@@ -35,36 +35,6 @@ Users can run diagnosis queries, check service health, and get incident summarie
 **Containerized deployment**
 The full stack runs with Docker and Docker Compose.
 
----
-
-## Architecture
-
-```mermaid
-flowchart LR
-    U[User] -->|diagnosis query| S[Slack Bot]
-    U -->|browser| D[Streamlit Dashboard]
-    S --> API[FastAPI Service]
-    D --> API
-
-    subgraph RAG[Hallucination-aware RAG]
-        API --> C[Symptom clarification]
-        C --> R[Hybrid retrieval: FAISS + structured data]
-        R --> G[LLM generation]
-        G --> H[CRAG + consistency check]
-    end
-
-    API -->|metrics| P[Prometheus]
-    P --> GF[Grafana]
-    P --> D
-
-    subgraph TRIAGE[Incident triage]
-        T[Triage agent] --> M[MCP tools]
-        M -->|docs, logs, metrics| API
-        M --> P
-    end
-
-    T -->|incident summary| S
-```
 
 ### How a diagnosis works
 
